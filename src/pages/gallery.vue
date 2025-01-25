@@ -1,6 +1,10 @@
 <script>
+
 export default {
-  name: "gallery"
+  name: "Gallery",
+  meta: {
+    layout: 'buyer',
+  },
 }
 </script>
 

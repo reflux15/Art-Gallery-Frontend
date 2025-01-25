@@ -1,0 +1,107 @@
+<template>
+  <div class="register-container">
+    <h1>Register</h1>
+    <v-form ref="registerForm" v-model="valid" lazy-validation>
+      <v-text-field
+        v-model="credentials.name"
+        label="Full Name"
+        :rules="[rules.required]"
+        required
+      ></v-text-field>
+
+      <v-text-field
+        v-model="credentials.email"
+        label="Email"
+        type="email"
+        :rules="[rules.required, rules.email]"
+        required
+      ></v-text-field>
+
+      <v-text-field
+        v-model="credentials.password"
+        label="Password"
+        type="password"
+        :rules="[rules.required, rules.password]"
+        required
+      ></v-text-field>
+
+      <v-text-field
+        v-model="credentials.confirmPassword"
+        label="Confirm Password"
+        type="password"
+        :rules="[rules.required, rules.passwordMatch]"
+        required
+      ></v-text-field>
+
+      <v-btn
+        :disabled="!valid"
+        color="#7657c3"
+        @click="submitRegister"
+      >
+        Register
+      </v-btn>
+    </v-form>
+    <p v-if="error" class="error">{{ error }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Register",
+  data() {
+    return {
+      credentials: {
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      },
+      valid: false,
+      error: null,
+      rules: {
+        required: (value) => !!value || "Field is required.",
+        email: (value) =>
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || "Invalid email format.",
+        password: (value) =>
+          value.length >= 6 || "Password must be at least 6 characters long.",
+        passwordMatch: (value) =>
+          value === this.credentials.password || "Passwords do not match.",
+      },
+    };
+  },
+  methods: {
+    submitRegister() {
+      if (this.valid) {
+        // Simulate a registration API call
+        console.log("Registering with:", this.credentials);
+
+        // Mock validation: Replace this with real API logic
+        if (this.credentials.password !== this.credentials.confirmPassword) {
+          this.error = "Passwords do not match.";
+        } else {
+          this.error = null;
+          alert("Registration successful!");
+          // Redirect or perform actions upon successful registration
+        }
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+.register-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #7657c3;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+</style>

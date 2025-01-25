@@ -5,13 +5,48 @@
  */
 
 // Composables
-import { createRouter, createWebHistory } from 'vue-router/auto'
-import { setupLayouts } from 'virtual:generated-layouts'
-import { routes } from 'vue-router/auto-routes'
+import { createRouter, createWebHistory } from 'vue-router'
+import Gallery from "@/pages/gallery.vue";
+import Login from "@/pages/login.vue";
+import Register from "@/pages/register.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: setupLayouts(routes),
+  routes: [
+    {
+      path: '/login',
+      component: () => import('@/layouts/default.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Login Page',
+          component: () => Login,
+        }
+      ]
+    },
+    {
+      path: '/register',
+      component: () => import('@/layouts/default.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Register Page',
+          component: () => Register,
+        }
+      ]
+    },
+    {
+      path: '/buyer',
+      component: () => import('@/layouts/buyer.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Gallery Page',
+          component: () => Gallery,
+        }
+      ]
+    },
+  ]
 })
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
