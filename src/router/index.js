@@ -6,9 +6,10 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import Gallery from "@/pages/gallery.vue";
+import Gallery from "@/pages/galleryPage.vue";
 import Login from "@/pages/login.vue";
 import Register from "@/pages/register.vue";
+import AddArtPage from "@/pages/AddArtPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,17 @@ const router = createRouter({
           path: '',
           name: 'Gallery Page',
           component: () => Gallery,
+        }
+      ]
+    },
+    {
+      path: '/artist/add',
+      component: () => import('@/layouts/artist.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Add Art',
+          component: () => AddArtPage,
         }
       ]
     },

@@ -12,6 +12,7 @@ export default {
   <div>
     <h1>Gallery</h1>
     <p>Welcome to the Gallery page!</p>
+    <gallery></gallery>
   </div>
 </template>
 

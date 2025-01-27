@@ -1,6 +1,7 @@
 <template>
   <v-main>
-    <gallery-toolbar></gallery-toolbar>
+    <buyer-app-bar></buyer-app-bar>
+    <buyer-nav-bar></buyer-nav-bar>
     <router-view />
   </v-main>
 
@@ -9,5 +10,6 @@
 
 <script setup>
 //
-import GalleryToolbar from "@/components/buyer/GalleryToolbar.vue";
+import BuyerAppBar from "@/components/buyer/BuyerAppBar.vue";
+import BuyerNavBar from "@/components/buyer/BuyerNavBar.vue";
 </script>

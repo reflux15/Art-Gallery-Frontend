@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar title="Art Gallery"  app color="#7657c3">
+  <v-app-bar title="Art Gallery" app color="#7657c3">
     <!-- Horizontal navigation list -->
     <v-spacer></v-spacer>
     <v-btn
@@ -21,9 +21,8 @@ export default {
     return {
       // Define the navigation items
       navItems: [
-        { icon: 'mdi-account-box', title: 'My Profile', to: '/buyer/' },
-        { icon: 'mdi-cart', title: 'My Cart', to: '/buyer/cart' },
-        { icon: 'mdi-heart', title: 'My Favorites', to: '/buyer/favorites' }
+        { icon: 'mdi-account-box', title: 'My Profile', to: '/buyer/profile' },
+        { icon: 'mdi-logout', title: 'Logout', to: '/login' },
       ]
     };
   }
