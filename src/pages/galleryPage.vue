@@ -1,13 +1,3 @@
-<script>
-
-export default {
-  name: "Gallery",
-  meta: {
-    layout: 'buyer',
-  },
-}
-</script>
-
 <template>
   <div>
     <h1>Gallery</h1>
@@ -15,6 +5,15 @@ export default {
     <gallery></gallery>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Gallery",
+  meta: {
+    layout: 'buyer',
+  },
+}
+</script>
 
 <style scoped lang="sass">
 

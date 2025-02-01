@@ -10,6 +10,6 @@
 
 <script setup>
 //
-import BuyerAppBar from "@/components/buyer/BuyerAppBar.vue";
-import BuyerNavBar from "@/components/buyer/BuyerNavBar.vue";
+import BuyerAppBar from "@/components/navbars/BuyerAppBar.vue";
+import BuyerNavBar from "@/components/navbars/BuyerNavBar.vue";
 </script>

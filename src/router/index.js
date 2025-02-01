@@ -10,6 +10,7 @@ import Gallery from "@/pages/galleryPage.vue";
 import Login from "@/pages/login.vue";
 import Register from "@/pages/register.vue";
 import AddArtPage from "@/pages/AddArtPage.vue";
+import OrdersPage from "@/pages/OrdersPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,17 @@ const router = createRouter({
           path: '',
           name: 'Gallery Page',
           component: () => Gallery,
+        }
+      ]
+    },
+    {
+      path: '/buyer/cart',
+      component: () => import('@/layouts/buyer.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Orders Page',
+          component: () => OrdersPage,
         }
       ]
     },
