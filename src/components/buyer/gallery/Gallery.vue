@@ -21,7 +21,9 @@
         <art-card :img="item.picture"
                   :title="item.title"
                   :author="item.author"
-                  :description="item.description"></art-card>
+                  :description="item.description"
+        />
+
       </v-col>
     </v-row>
   </v-container>
@@ -29,6 +31,7 @@
 
 <script>
 import ArtCard from "@/components/buyer/gallery/ArtCard.vue";
+import {useFavoritesStore} from "@/stores/favorites.js";
 
 export default {
   components: {ArtCard},
@@ -77,6 +80,11 @@ export default {
         }
       ],
     };
+  },
+  setup() {
+    return {
+      favoritesStore: useFavoritesStore()
+    }
   },
 };
 </script>

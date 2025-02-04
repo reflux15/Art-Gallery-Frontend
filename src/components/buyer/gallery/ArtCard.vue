@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import {useFavoritesStore} from "@/stores/favorites.js";
+
 export default {
   name: "ArtCard",
   props: {
@@ -65,18 +67,55 @@ export default {
       required: true,
     }
   },
+  setup() {
+    return {
+      favoritesStore: useFavoritesStore()
+    }
+  },
   data: () => ({
     show: true,
-    isHeartClicked: false,
+    isHeartClicked: true,
     isOrderClicked: false,
   }),
+  mounted() {
+    this.isHeartClicked = this.favoritesStore.isItemFavorited({
+      picture: this.img,
+      title: this.title,
+      author: this.author,
+      description: this.description
+    })
+  },
   methods: {
     toggleHeartClick() {
+      console.log("click favorite", this.img, this.isHeartClicked)
       this.isHeartClicked = !this.isHeartClicked;
+      console.log("after click", this.img, this.isHeartClicked)
+      if (this.isHeartClicked) {
+        this.actionAddToFavorites({
+          picture: this.img,
+          title: this.title,
+          author: this.author,
+          description: this.description
+        })
+      } else {
+        this.actionRemoveFromFavorites({
+          picture: this.img,
+          title: this.title,
+          author: this.author,
+          description: this.description
+        })
+      }
     },
     toggleOrderClick() {
       this.isOrderClicked = !this.isOrderClicked;
     },
+    actionAddToFavorites(item) {
+      this.favoritesStore.addFavorite(item)
+    },
+    actionRemoveFromFavorites(item) {
+      this.favoritesStore.removeFavoritedItem(item)
+    }
+
   },
 }
 </script>
