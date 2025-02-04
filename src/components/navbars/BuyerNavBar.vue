@@ -8,7 +8,7 @@
       <v-list-item prepend-icon="mdi-cart" title="My Orders" to="/buyer/cart"></v-list-item>
       <v-list-item prepend-icon="mdi-heart" title="Favourites" to="/buyer/favourites"></v-list-item>
       <v-list-item prepend-icon="mdi-palette" title="Art Styles" @click="openDialog"></v-list-item>
-      <v-list-item prepend-icon="mdi-account-music" title="Artists" to="/owner/artists"></v-list-item>
+      <v-list-item prepend-icon="mdi-account-music" title="Artists" to="/buyer/artists"></v-list-item>
     </v-list>
   </v-navigation-drawer>
   <div class="text-center pa-4">

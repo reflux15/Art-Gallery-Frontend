@@ -11,10 +11,22 @@ import Login from "@/pages/login.vue";
 import Register from "@/pages/register.vue";
 import AddArtPage from "@/pages/AddArtPage.vue";
 import OrdersPage from "@/pages/OrdersPage.vue";
+import ArtistsPage from "@/pages/ArtistsPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/',
+      component: () => import('@/layouts/buyer.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Gallery Page Home',
+          component: () => Gallery,
+        }
+      ]
+    },
     {
       path: '/login',
       component: () => import('@/layouts/default.vue'),
@@ -56,6 +68,17 @@ const router = createRouter({
           path: '',
           name: 'Orders Page',
           component: () => OrdersPage,
+        }
+      ]
+    },
+    {
+      path: '/buyer/artists',
+      component: () => import('@/layouts/buyer.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Artists',
+          component: () => ArtistsPage,
         }
       ]
     },
