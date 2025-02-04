@@ -45,7 +45,7 @@ export default {
 }
 
 .artist-background {
-  width: 400px;
+  width: 390px;
   height: 90px;
   z-index: -10;
   opacity: 80%;

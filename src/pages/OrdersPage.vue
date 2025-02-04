@@ -1,3 +1,27 @@
+<template>
+  <v-container>
+    <v-row>
+      <v-col>
+        <h1>Orders</h1>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <OrderItemCardNew
+          v-for="order in orders"
+          :key="order.id"
+          :img="order.img"
+          :item-name="order.itemName"
+          :author-name="order.authorName"
+          :price="order.price"
+          :currency="order.currency"
+          class="pb-5 pl-5"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
 <script>
 
 import OrderItemCardNew from "@/components/buyer/OrderItemCard.vue";
@@ -29,21 +53,6 @@ export default {
   }
 }
 </script>
-
-<template>
-  <OrderItemCardNew
-    v-for="order in orders"
-    :key="order.id"
-    :img="order.img"
-    :item-name="order.itemName"
-    :author-name="order.authorName"
-    :price="order.price"
-    :currency="order.currency"
-    class="pb-5 pl-5"
-  />
-  <v-row></v-row>
-
-</template>
 
 <style scoped>
 
