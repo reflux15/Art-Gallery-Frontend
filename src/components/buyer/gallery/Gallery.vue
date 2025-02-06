@@ -46,37 +46,49 @@ export default {
           picture: "https://images.unsplash.com/photo-1605460375648-278bcbd579a6",
           title: "My Dummy Title",
           author: "Dummy Author",
-          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          style: "photography",
+          subjects: ["animals"]
         },
         {
           picture: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
           title: "My Dummy Title",
           author: "Dummy Author",
-          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          style: "digital",
+          subjects: ["abstract"]
         },
         {
           picture: "https://images.unsplash.com/photo-1736616980443-537d3af09915?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           title: "My Dummy Title",
           author: "Dummy Author",
-          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          style: "photography",
+          subjects: ["plants", "landscape"]
         },
         {
           picture: "https://images.unsplash.com/photo-1710436000845-bb707af976a6?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           title: "My Dummy Title",
           author: "Dummy Author",
-          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          style: "photography",
+          subject: ["portrait", "vintage"]
         },
         {
           picture: "https://images.unsplash.com/photo-1540206395-68808572332f",
           title: "My Dummy Title",
           author: "Dummy Author",
-          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          style: "photography",
+          subject: ["architecture"]
         },
         {
           picture: "https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d",
           title: "My Dummy Title",
           author: "Dummy Author",
-          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          style: "painting",
+          subject: ["bw"]
         }
       ],
     };

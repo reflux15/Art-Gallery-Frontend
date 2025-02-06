@@ -24,11 +24,11 @@
         <v-row>
           <v-col cols="6" class="text-center d-flex flex-column align-center justify-center">
             <h1>Art Styles</h1>
-            <v-radio-group>
+            <v-radio-group v-model="artStylesModel">
               <v-list>
-                <v-list-item v-for="item in artStyles" :key="item">
+                <v-list-item v-for="item in artStyles" :key="item.name">
                   <div class="d-flex flex-row align-center">
-                    <v-radio v-model="item.selected" :label="item.name" :value="item.name" class="d-inline d-flex"></v-radio>
+                    <v-radio :label="item.name" :value="item.name" class="d-inline d-flex" />
                   </div>
                 </v-list-item>
               </v-list>
@@ -101,18 +101,19 @@ export default {
           selected: false,
         },
       ],
+      artStylesModel: "All",
       artStyles: [
         {
+          name: "All",
+        },
+        {
           name: "Paintings",
-          selected: false,
         },
         {
           name: "Digital Art",
-          selected: false,
         },
         {
           name: "Photography",
-          selected: false,
         },
       ]
     }
