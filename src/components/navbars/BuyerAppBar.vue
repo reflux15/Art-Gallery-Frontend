@@ -17,7 +17,10 @@
       </v-btn>
     </div>
     <div v-else>
-      <v-chip prepend-icon="mdi-account" class="mr-4"> {{ accountStore.username }}</v-chip>
+      <v-chip prepend-icon="mdi-account" class="mr-1"> {{ accountStore.username }}</v-chip>
+      <v-btn prepend-icon="mdi-logout" @click="logout">
+        Logout
+      </v-btn>
     </div>
   </v-app-bar>
 </template>
@@ -34,6 +37,12 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("account")
+      this.accountStore.isLoggedIn = false
+    }
   }
 };
 </script>
