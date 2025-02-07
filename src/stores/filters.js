@@ -4,7 +4,7 @@ import _ from "lodash";
 
 export const useFiltersStore = defineStore('filters', {
   state: () => ({
-    selectedStyle: null,
+    selectedStyle: "All",
     selectedSubjects: new Set()
   }),
   actions: {

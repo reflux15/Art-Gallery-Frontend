@@ -2,10 +2,13 @@
   <v-container>
     <v-row>
       <v-col cols="auto">
-        <v-chip v-for="(filter, index) in filters"
-                :key="index"
+        <v-chip color="primary" label class="mr-4">
+          {{ filtersStore.selectedStyle }}
+        </v-chip>
+        <v-chip v-for="(filter, _) in filtersStore.selectedSubjects"
+                :key="filter"
                 class="mr-3">
-          {{ filter }}
+          {{ filters[filter] }}
         </v-chip>
       </v-col>
     </v-row>
@@ -32,15 +35,22 @@
 <script>
 import ArtCard from "@/components/buyer/gallery/ArtCard.vue";
 import {useFavoritesStore} from "@/stores/favorites.js";
+import {useFiltersStore} from "@/stores/filters.js";
 
 export default {
   components: {ArtCard},
   data() {
     return {
-      filters: [
-        "Landscape",
-        "Portrait"
-      ],
+      filters: {
+        landscape: "Landscapes",
+        plants: "Florals and Plants",
+        abstract: "Abstract",
+        animals: "Animals",
+        portraits: "Portraits",
+        vintage: "Vintage",
+        architecture: "Architecture",
+        bw: "Black & White",
+      },
       cards: [
         {
           picture: "https://images.unsplash.com/photo-1605460375648-278bcbd579a6",
@@ -95,7 +105,8 @@ export default {
   },
   setup() {
     return {
-      favoritesStore: useFavoritesStore()
+      favoritesStore: useFavoritesStore(),
+      filtersStore: useFiltersStore()
     }
   },
 };
