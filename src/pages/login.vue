@@ -41,8 +41,16 @@
 </template>
 
 <script>
+import {useAccountStore} from "@/stores/account.js";
+import axios from "axios";
+
 export default {
   name: "Login",
+  setup() {
+    return {
+      accountStore: useAccountStore()
+    }
+  },
   data() {
     return {
       credentials: {
@@ -59,22 +67,31 @@ export default {
     };
   },
   methods: {
-    submitLogin() {
+    async submitLogin() {
       if (this.valid) {
         // Simulate a login API call
         console.log("Logging in with:", this.credentials);
 
-        // Mock validation: Replace this with real API logic
-        if (
-          this.credentials.email === "user@example.com" &&
-          this.credentials.password === "password"
-        ) {
-          this.error = null;
-          alert("Login successful!");
-          // Redirect or perform actions upon successful login
-        } else {
-          this.error = "Invalid email or password.";
+        try {
+          let response = await axios.post("http://localhost:8000/users/login", {}, {
+            auth: {
+              username: this.credentials.email,
+              password: this.credentials.password
+            }
+          })
+          console.log("Login response", response)
+          this.accountStore.isLoggedIn = true
+          this.accountStore.username = response.data.username
+          this.accountStore.role = response.data.role
+          if (this.accountStore.role.toLowerCase() === "buyer") {
+            await this.$router.push('/buyer')
+          } else {
+            await this.$router.push('/artist/add')
+          }
+        } catch {
+          alert("Failed to login, please try again.")
         }
+
       }
     },
   },

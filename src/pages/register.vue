@@ -98,11 +98,7 @@ export default {
               "email": this.credentials.email
             })
             if (response.status === 201) {
-              if (this.credentials.role.toLowerCase() === "buyer") {
-                await this.$router.push('/buyer')
-              } else {
-                await this.$router.push('/artist/add')
-              }
+              await this.$router.push('/login')
             } else {
               alert("Failed to register, please try again!");
             }

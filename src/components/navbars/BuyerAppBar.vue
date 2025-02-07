@@ -16,6 +16,9 @@
         Login
       </v-btn>
     </div>
+    <div v-else>
+      <v-chip prepend-icon="mdi-account" class="mr-4"> {{ accountStore.username }}</v-chip>
+    </div>
   </v-app-bar>
 </template>
 
