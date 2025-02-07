@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Register",
   data() {
@@ -77,7 +79,7 @@ export default {
     };
   },
   methods: {
-    submitRegister() {
+    async submitRegister() {
       if (this.valid) {
         // Simulate a registration API call
         console.log("Registering with:", this.credentials);
@@ -87,8 +89,26 @@ export default {
           this.error = "Passwords do not match.";
         } else {
           this.error = null;
-          alert("Registration successful!");
-          // Redirect or perform actions upon successful registration
+          try {
+            let response = await axios.post("http://localhost:8000/users/register", {
+              "username": this.credentials.email,
+              "password": this.credentials.password,
+              "role": this.credentials.role.toLowerCase(),
+              "full_name": this.credentials.name,
+              "email": this.credentials.email
+            })
+            if (response.status === 201) {
+              if (this.credentials.role.toLowerCase() === "buyer") {
+                await this.$router.push('/buyer')
+              } else {
+                await this.$router.push('/artist/add')
+              }
+            } else {
+              alert("Failed to register, please try again!");
+            }
+          } catch {
+            alert("Failed to register, please try again!");
+          }
         }
       }
     },
