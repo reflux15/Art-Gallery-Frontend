@@ -83,6 +83,13 @@ export default {
           this.accountStore.isLoggedIn = true
           this.accountStore.username = response.data.username
           this.accountStore.role = response.data.role
+
+          localStorage.setItem("account", JSON.stringify({
+            "isLoggedIn": true,
+            "username": response.data.username,
+            "role": response.data.role
+          }))
+
           if (this.accountStore.role.toLowerCase() === "buyer") {
             await this.$router.push('/buyer')
           } else {

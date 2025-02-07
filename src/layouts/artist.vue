@@ -14,6 +14,7 @@ export default {
     <artist-nav-bar></artist-nav-bar>
     <router-view></router-view>
   </v-main>
+  <AppFooter />
 </template>
 
 <style scoped>
