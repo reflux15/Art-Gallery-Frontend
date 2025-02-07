@@ -32,7 +32,12 @@
         :rules="[rules.required, rules.passwordMatch]"
         required
       ></v-text-field>
-
+      <v-select
+        v-model="credentials.role"
+        label="Role"
+        :items="roles"
+        variant="outlined"
+      ></v-select>
       <v-btn
         :disabled="!valid"
         color="#7657c3"
@@ -50,11 +55,13 @@ export default {
   name: "Register",
   data() {
     return {
+      roles: ['Buyer', 'Artist'],
       credentials: {
         name: "",
         email: "",
         password: "",
         confirmPassword: "",
+        role: "Buyer",
       },
       valid: false,
       error: null,

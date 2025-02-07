@@ -2,29 +2,35 @@
   <v-app-bar title="Art Gallery" app color="#7657c3">
     <!-- Horizontal navigation list -->
     <v-spacer></v-spacer>
-    <v-btn
-      v-for="(item, index) in navItems"
-      :key="index"
-      :to="item.to"
-      text
-      :prepend-icon="item.icon"
-    >
-      {{ item.title }}
-    </v-btn>
+    <div v-if="!accountStore.isLoggedIn">
+      <v-btn
+        to="/register"
+        prepend-icon="mdi-account-plus"
+      >
+        Register
+      </v-btn>
+      <v-btn
+        to="/login"
+        prepend-icon="mdi-logout"
+      >
+        Login
+      </v-btn>
+    </div>
   </v-app-bar>
 </template>
 
 <script>
+import {useAccountStore} from "@/stores/account.js";
+
 export default {
   name: 'AppNavbar',
-  data() {
+  setup() {
     return {
-      // Define the navigation items
-      navItems: [
-        { icon: 'mdi-account-box', title: 'My Profile', to: '/buyer/profile' },
-        { icon: 'mdi-logout', title: 'Logout', to: '/login' },
-      ]
-    };
+      accountStore: useAccountStore()
+    }
+  },
+  data() {
+    return {};
   }
 };
 </script>

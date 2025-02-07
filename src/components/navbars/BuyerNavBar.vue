@@ -10,6 +10,7 @@
         to="/buyer"
       />
       <v-list-item
+        v-if="accountStore.isLoggedIn"
         prepend-icon="mdi-cart"
         title="My Orders"
         to="/buyer/cart"
@@ -99,12 +100,14 @@
 
 <script>
 import {useFiltersStore} from "@/stores/filters.js";
+import {useAccountStore} from "@/stores/account.js";
 
 export default {
   name: "BuyerNavBar",
   setup() {
     return {
-      filterStore: useFiltersStore()
+      filterStore: useFiltersStore(),
+      accountStore: useAccountStore()
     }
   },
   data() {
