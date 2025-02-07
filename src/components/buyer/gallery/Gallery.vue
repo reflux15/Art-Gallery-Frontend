@@ -15,7 +15,7 @@
 
     <v-row>
       <v-col
-        v-for="(item, index) in cards"
+        v-for="(item, index) in filteredData"
         :key="index"
         cols="12"
         md="4"
@@ -39,6 +39,12 @@ import {useFiltersStore} from "@/stores/filters.js";
 
 export default {
   components: {ArtCard},
+  setup() {
+    return {
+      favoritesStore: useFavoritesStore(),
+      filtersStore: useFiltersStore()
+    }
+  },
   data() {
     return {
       filters: {
@@ -57,7 +63,7 @@ export default {
           title: "My Dummy Title",
           author: "Dummy Author",
           description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          style: "photography",
+          style: "Photography",
           subjects: ["animals"]
         },
         {
@@ -65,7 +71,7 @@ export default {
           title: "My Dummy Title",
           author: "Dummy Author",
           description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          style: "digital",
+          style: "Digital Art",
           subjects: ["abstract"]
         },
         {
@@ -73,7 +79,7 @@ export default {
           title: "My Dummy Title",
           author: "Dummy Author",
           description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          style: "photography",
+          style: "Photography",
           subjects: ["plants", "landscape"]
         },
         {
@@ -81,32 +87,34 @@ export default {
           title: "My Dummy Title",
           author: "Dummy Author",
           description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          style: "photography",
-          subject: ["portrait", "vintage"]
+          style: "Photography",
+          subjects: ["portrait", "vintage", "landscape"]
         },
         {
           picture: "https://images.unsplash.com/photo-1540206395-68808572332f",
           title: "My Dummy Title",
           author: "Dummy Author",
           description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          style: "photography",
-          subject: ["architecture"]
+          style: "Photography",
+          subjects: ["architecture"]
         },
         {
           picture: "https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d",
           title: "My Dummy Title",
           author: "Dummy Author",
           description: "dummy description eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-          style: "painting",
-          subject: ["bw"]
+          style: "Paintings",
+          subjects: ["bw"]
         }
       ],
     };
   },
-  setup() {
-    return {
-      favoritesStore: useFavoritesStore(),
-      filtersStore: useFiltersStore()
+  computed: {
+    filteredData() {
+      return this.cards.filter(item => (item.style === this.filtersStore.selectedStyle || this.filtersStore.selectedStyle === "All")).filter(item => {
+        let subjects = new Set(item.subjects)
+        return subjects.intersection(this.filtersStore.selectedSubjects).size >= 1 || this.filtersStore.selectedSubjects.size === 0
+      })
     }
   },
 };
