@@ -7,7 +7,16 @@
         :rules="rules"
         label="Piece Title"
       ></v-text-field>
-      <v-textarea v-model="description" label="Description"></v-textarea>
+      <v-select
+        v-model="art_category"
+        label="Category"
+        :items="['Paintings', 'Digital Art', 'Photography']"
+      ></v-select>
+      <v-select
+        v-model="art_subject"
+        label="Subject"
+        :items="['Landscapes', 'Florals and Plants', 'Abstract', 'Animals', 'Portraits', 'Vintage', 'Architecture', 'Black & White']"
+      ></v-select>
       <v-row>
         <v-col cols="8">
           <v-number-input v-model="price" label="Price"></v-number-input>
@@ -43,7 +52,8 @@ export default {
   },
   data: () => ({
     title: '',
-    description: '',
+    art_category: 'Paintings',
+    art_subject: "Landscapes",
     price: 0,
     currencies: [ "USD", "EUR", "RON" ],
     previewImage: null,
