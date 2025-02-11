@@ -13,6 +13,7 @@ import AddArtPage from "@/pages/AddArtPage.vue";
 import OrdersPage from "@/pages/OrdersPage.vue";
 import ArtistsPage from "@/pages/ArtistsPage.vue";
 import FavoritesPage from "@/pages/FavoritesPage.vue";
+import ArtistGallery from "@/pages/ArtistGallery.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -105,6 +106,17 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path: "/artist/gallery",
+      component: () => import('@/layouts/artist.vue'),
+      children: [
+        {
+          path: '',
+          name: 'Artist Gallery',
+          component: () => ArtistGallery,
+        }
+      ]
+    }
   ]
 })
 
